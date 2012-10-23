@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/story-carder.css" />
+  </head>
+  <body>
+    <div id="content"></div>
+    
+    <script id="card-template" type="text/x-handlebars-template">
+        <div class="index-card">
+            <div class="header">
+              <span class="project-code">{{project}} {{number}}</span>
+              <span class="title">{{title}}</span>
+            </div>
+            <div class="description">
+              {{description}}
+            </div>
+            <div class="result">
+              {{result}}
+            </div>
+            <div class="footer">
+              <span class="creator">{{creator}}</span>
+              <span class="created">{{created}}</span>
+              <span class="due-date">{{due}}</span>
+            </div>
+        </div>
+<div class="breaker-breaker"></div>
+    </script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tabletop.js"></script>
+    <script type="text/javascript">
+// You change the URL variable in the next line to the URL of your copied Google doc.
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Ark-PJD-Ze_DdE1jTFJQMktYQk12UC1EeWk3eXl4dnc&output=html';
+
+      $(document).ready( function() {
+        Tabletop.init( { key: public_spreadsheet_url,
+                         callback: showInfo,
+                         parseNumbers: true } );
+      });
+        
+      function showInfo(data, tabletop) {
+        var source   = $("#card-template").html();
+        var template = Handlebars.compile(source);
+
+        $.each( tabletop.sheets("cards").all(), function(i, cat) {
+          var html = template(cat);
+          $("#content").append(html);
+        });
+      }
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+body {
+    margin:0;
+    padding:0;
+    font-family:"Comic Sans MS";
+    background:#333;
+    font-size:1.1em;
+}
+.index-card {
+    background-color:white;
+    width:5.2in;
+    height:3.5in;
+    box-sizing:border-box;
+    -webkit-transform:rotate(90deg);
+    margin:1.2in auto 0;
+    position: relative;
+    overflow:hidden;
+}
+.breaker-breaker {
+    page-break-before:always;
+}
+.index-card .project-code {
+    float:left;
+}
+.index-card .title {
+    display:block;
+    margin-left:1.2in;
+    overflow:hidden;
+    font-size: 1em;
+    width:3in;
+}
+.index-card .description {
+    margin:14px 0;
+}
+.index-card .result {
+}
+.index-card .footer {
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    font-weight: strong;
+}
+.index-card .footer .due-date {
+    position:absolute;
+    right:0;
+}
